@@ -23,8 +23,10 @@ A modern Windows application for automatic folder synchronization built with Win
 
 ## Screenshots
 
-![Oabac Dashboard](screenshots/dashboard.png)
-*Modern dashboard with sync controls*
+<img width="841" height="675" alt="image" src="https://github.com/user-attachments/assets/65ed878f-5d9b-46ff-92d9-7dfaf66d49e8" />
+<img width="831" height="665" alt="image" src="https://github.com/user-attachments/assets/aea02a70-a3c5-418c-a7c3-b18af7062514" />
+
+
 
 ## System Requirements
 
@@ -119,5 +121,6 @@ If you encounter any issues or have questions:
 - Multiple folder mapping support
 
 ---
+
 
 **Made with ?? using WinUI 3 and .NET 8**
