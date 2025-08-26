@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Oabac.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <!-- Custom title bar - now with Mica background like NavView -->
+        <Border x:Name="AppTitleBar"
+                IsHitTestVisible="True"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Height="48"
+                Canvas.ZIndex="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- App icon and title -->
+                <StackPanel Grid.Column="0" 
+                           Orientation="Horizontal" 
+                           VerticalAlignment="Center"
+                           Margin="16,0,0,0">
+                    <!-- App icon -->
+                    <Image Source="Assets/sync.ico" 
+                           Width="16" 
+                           Height="16"
+                           VerticalAlignment="Center"
+                           Margin="0,0,8,0"/>
+                    <TextBlock Text="Oabac" 
+                              Style="{ThemeResource CaptionTextBlockStyle}"
+                              VerticalAlignment="Center"
+                              Margin="0,0,0,0"/>
+                </StackPanel>
+                
+                <!-- Title bar drag area -->
+                <Border Grid.Column="1" Background="Transparent"/>
+                
+                <!-- Title bar buttons area (handled by system) -->
+                <Border Grid.Column="2" x:Name="TitleBarButtonsArea" Width="138" Background="Transparent"/>
+            </Grid>
+        </Border>
+
+        <!-- Main NavigationView with proper spacing -->
+        <NavigationView x:Name="NavView"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="True"
+                        PaneDisplayMode="Left"
+                        SelectionChanged="OnNavSelectionChanged"
+                        IsTitleBarAutoPaddingEnabled="False"
+                        IsPaneOpen="False"
+                        Margin="0,48,0,0">
+            <NavigationView.Resources>
+                <!-- Modern navigation styling -->
+                <CornerRadius x:Key="NavigationViewItemCornerRadius">4</CornerRadius>
+                <SolidColorBrush x:Key="NavigationViewPaneBackground" Color="{ThemeResource SolidBackgroundFillColorBase}" />
+                <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="{ThemeResource SolidBackgroundFillColorBase}" />
+                <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="{ThemeResource SolidBackgroundFillColorBase}" />
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="{ThemeResource LayerFillColorDefault}" />
+                <SolidColorBrush x:Key="NavigationViewContentGridBackground" Color="{ThemeResource LayerFillColorDefault}" />
+            </NavigationView.Resources>
+            
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" Tag="Oabac.HomePage" DoubleTapped="OnNavItemDoubleTapped"/>
+                <NavigationViewItem Icon="Sync" Content="Mappings" Tag="Oabac.MappingsPage" DoubleTapped="OnNavItemDoubleTapped"/>
+                <NavigationViewItem Icon="Document" Content="Activity Log" Tag="Oabac.ActivityPage" DoubleTapped="OnNavItemDoubleTapped"/>
+            </NavigationView.MenuItems>
+
+            <!-- Content frame with proper WinUI 3 spacing -->
+            <Grid Background="{ThemeResource LayerFillColorDefaultBrush}">
+                <Frame x:Name="ContentFrame" 
+                       Background="Transparent" 
+                       Margin="0,24,0,0"/>
+            </Grid>
+        </NavigationView>
+    </Grid>
+</Window>
