@@ -22,6 +22,14 @@
 
 ## Installation
 
+### Option 1: Installer (Recommended)
+1.  Go to the [Releases](https://github.com/DineYarl/Oabac/releases) page.
+2.  Download **`Oabac_Installer.zip`**.
+3.  Extract the zip file.
+4.  Right-click **`Install.ps1`** and select **Run with PowerShell**.
+    *   This will automatically install the required certificate and the app.
+
+### Option 2: Portable (No Install)
 1.  Go to the [Releases](https://github.com/DineYarl/Oabac/releases) page.
 2.  Download the zip file matching your system architecture:
     *   **x64** (Standard 64-bit Windows): `Oabac_x64.zip`
