@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Oabac (Unpackaged)": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

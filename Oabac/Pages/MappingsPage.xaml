@@ -1,0 +1,65 @@
+<Page
+    x:Class="Oabac.Pages.MappingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Oabac.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Spacing="20" Padding="20">
+            <StackPanel.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition FromVerticalOffset="50" IsStaggeringEnabled="True"/>
+                </TransitionCollection>
+            </StackPanel.ChildrenTransitions>
+            <TextBlock Text="Mappings" Style="{StaticResource TitleTextBlockStyle}"/>
+
+            <Grid Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Existing Mappings" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    <ListView x:Name="MappingsList" SelectionMode="Single">
+                        <ListView.ItemContainerTransitions>
+                            <TransitionCollection>
+                                <AddDeleteThemeTransition/>
+                                <ContentThemeTransition/>
+                                <ReorderThemeTransition/>
+                                <EntranceThemeTransition IsStaggeringEnabled="True"/>
+                            </TransitionCollection>
+                        </ListView.ItemContainerTransitions>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding SourcePath}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding DestinationPath}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Content="Remove Selected" Click="RemoveSelected_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Add New Mapping" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    <TextBox x:Name="SourceBox" Header="Source Folder"/>
+                    <Button Content="Browse..." Click="BrowseSource_Click"/>
+                    
+                    <TextBox x:Name="DestBox" Header="Destination Folder"/>
+                    <Button Content="Browse..." Click="BrowseDest_Click"/>
+                    
+                    <TextBox x:Name="ExclusionsBox" Header="Exclusions (comma separated, e.g. *.tmp, node_modules)" PlaceholderText="*.tmp, bin, obj"/>
+                    
+                    <ComboBox x:Name="DirectionCombo" Header="Sync Direction" SelectedIndex="0">
+                        <ComboBoxItem Content="One-Way (Source -> Destination)"/>
+                        <ComboBoxItem Content="Two-Way (Merge Changes)"/>
+                    </ComboBox>
+
+                    <Button Content="Add Mapping" Click="AddMapping_Click" Style="{StaticResource AccentButtonStyle}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

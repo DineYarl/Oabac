@@ -1,0 +1,69 @@
+<Page
+    x:Class="Oabac.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Oabac.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Spacing="20" Padding="20">
+            <StackPanel.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition FromVerticalOffset="50" IsStaggeringEnabled="True"/>
+                </TransitionCollection>
+            </StackPanel.ChildrenTransitions>
+            <TextBlock Text="Settings" Style="{StaticResource TitleTextBlockStyle}"/>
+
+            <Grid Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Sync Settings" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    
+                    <StackPanel Spacing="4">
+                        <ComboBox x:Name="SyncModeCombo" Header="Sync Mode" SelectionChanged="SyncModeCombo_SelectionChanged" HorizontalAlignment="Stretch">
+                            <ComboBoxItem Content="Interval"/>
+                            <ComboBoxItem Content="Realtime"/>
+                        </ComboBox>
+                        <TextBlock Text="Choose between Real-time sync (immediate) or Interval sync (scheduled)." Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </StackPanel>
+
+                    <StackPanel Spacing="4">
+                        <ComboBox x:Name="SyncIntervalCombo" Header="Sync Interval" SelectionChanged="SyncIntervalCombo_SelectionChanged" HorizontalAlignment="Stretch">
+                            <ComboBoxItem Content="30 min"/>
+                            <ComboBoxItem Content="1 hr"/>
+                            <ComboBoxItem Content="2 hr"/>
+                        </ComboBox>
+                        <TextBlock Text="How often the sync should run when in Interval mode." Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </StackPanel>
+
+                    <StackPanel Spacing="0">
+                        <ToggleSwitch x:Name="MirrorDeletionsToggle" Header="Mirror Deletions" OffContent="Off" OnContent="On" Toggled="MirrorDeletionsToggle_Toggled"/>
+                        <TextBlock Text="If a file is deleted in the source, delete it in the destination as well." Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="0,-4,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Spacing="0">
+                        <ToggleSwitch x:Name="UseRecycleBinToggle" Header="Use Recycle Bin" OffContent="Off" OnContent="On" Toggled="UseRecycleBinToggle_Toggled"/>
+                        <TextBlock Text="Move deleted or overwritten files to the Recycle Bin instead of permanently deleting them." Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="0,-4,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Grid Background="{ThemeResource LayerFillColorDefaultBrush}" CornerRadius="8" Padding="16">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Application Settings" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                    
+                    <StackPanel Spacing="0">
+                        <ToggleSwitch x:Name="RunAtStartupToggle" Header="Run at Startup" OffContent="Off" OnContent="On" Toggled="RunAtStartupToggle_Toggled"/>
+                        <TextBlock Text="Automatically start Oabac when you log in to Windows." Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="0,-4,0,0"/>
+                    </StackPanel>
+
+                    <StackPanel Spacing="0">
+                        <ToggleSwitch x:Name="MinimizeToTrayToggle" Header="Minimize to Tray" OffContent="Off" OnContent="On" Toggled="MinimizeToTrayToggle_Toggled"/>
+                        <TextBlock Text="Minimize the application to the system tray instead of the taskbar." Style="{StaticResource CaptionTextBlockStyle}" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="0,-4,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
