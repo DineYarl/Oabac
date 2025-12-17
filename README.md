@@ -26,8 +26,8 @@
 1.  Go to the [Releases](https://github.com/DineYarl/Oabac/releases) page.
 2.  Download **`Oabac_Installer.zip`**.
 3.  Extract the zip file.
-4.  Right-click **`Install.ps1`** and select **Run with PowerShell**.
-    *   This will automatically install the required certificate and the app.
+4.  Double-click **`Install.cmd`**.
+    *   This will automatically bypass restrictions and install the app.
 
 ### Option 2: Portable (No Install)
 1.  Go to the [Releases](https://github.com/DineYarl/Oabac/releases) page.
